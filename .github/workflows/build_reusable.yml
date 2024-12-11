@@ -87,7 +87,13 @@ env:
 jobs:
   build:
     timeout-minutes: ${{ inputs.timeout_minutes }}
-    runs-on: depot-ubuntu-22.04
+    runs-on: ubuntu-latest
+    # Permissions to use OIDC token authentication
+    permissions:
+      contents: read
+      id-token: write
+      # Allows pushing to the GitHub Container Registry
+      packages: write
 
     outputs:
       input_step_key: ${{ steps.var.outputs.input_step_key }}

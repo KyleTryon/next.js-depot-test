@@ -25,9 +25,13 @@ env:
 jobs:
   changes:
     name: Determine changes
-    runs-on: depot-ubuntu-22.04
+    runs-on: ubuntu-latest
+    # Permissions to use OIDC token authentication
     permissions:
       contents: read
+      id-token: write
+      # Allows pushing to the GitHub Container Registry
+      packages: write
     steps:
       - uses: actions/checkout@v4
         with:
